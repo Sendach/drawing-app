@@ -7,11 +7,11 @@ type Props = {
 }
 
 const Drawing = ({ color }: Props) => {
-  const [tool, setTool] = useState('brush');
-  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [tool, setTool] = useState<string>('brush');
+  const [isMouseDown, setIsMouseDown] = useState<boolean>(false);
   const [lines, setLines] = useState([]);
 
-  let mode = 'brush';
+  let mode: string = 'brush';
 
   const handleMouseDown = (e: KonvaEventObject<MouseEvent>) => {
     setIsMouseDown(true);
