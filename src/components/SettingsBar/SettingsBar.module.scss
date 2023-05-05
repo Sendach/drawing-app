@@ -1,0 +1,19 @@
+.settingsBar {
+  width: 100vw;
+  height: 55px;
+  background-color: var(--toolbar-color);
+
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  padding-left: 3rem;
+}
+
+.logo {
+  color: #ddd;
+}
+
+.selectedTool {
+  color: #fff;
+  font-size: 16px;
+}
