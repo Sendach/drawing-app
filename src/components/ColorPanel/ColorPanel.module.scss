@@ -1,0 +1,25 @@
+.colorPanel {
+  font-size: 20px;
+  color: #e25231;
+
+  display: flex;
+  gap: 1.25rem;
+}
+
+.colorSelection {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+
+.hexCode {
+  padding: 4px 0px 5px;
+  border: 0px;
+  background: none;
+  border-bottom: 2px solid rgb(144, 202, 249);
+
+  color: #fff;
+  &:focus {
+    outline: 0px;
+  }
+}

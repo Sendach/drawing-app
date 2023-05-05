@@ -1,0 +1,19 @@
+.colorSelector {
+  width: 20px;
+  height: 20px;
+
+  background-color: red;
+  border-radius: 5px;
+}
+
+.hexCode {
+  padding: 4px 0px 5px;
+  border: 0px;
+  background: none;
+  border-bottom: 2px solid rgb(144, 202, 249);
+
+  color: #fff;
+  &:focus {
+    outline: 0px;
+  }
+}
