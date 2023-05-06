@@ -3,55 +3,16 @@ import { useState } from 'react';
 import { Stage, Layer, Rect, Line } from 'react-konva';
 
 type Props = {
-  tool: string,
-  color: string
+  lines: any,
 }
 
-const Drawing = ({ color, tool }: Props) => {
-
-  const [isMouseDown, setIsMouseDown] = useState(false);
-  const [lines, setLines] = useState([]);
-
-  let mode = 'brush';
-
-  const handleMouseDown = (e: KonvaEventObject<MouseEvent>) => {
-    setIsMouseDown(true);
-    const pos = e.target.getStage().getPointerPosition();
-    setLines([...lines, { tool, color, points: [pos.x, pos.y] }]);
-  }
-
-  const handleMouseMovement = (e: KonvaEventObject<MouseEvent>) => { 
-    const stage = e.target.getStage();
-    const pos = stage.getPointerPosition();
-    
-    // Create a line between last known position and current position
-    let lastLine = lines[lines.length - 1];
-    lastLine.points = lastLine.points.concat([pos.x, pos.y])
-    
-    lines.splice(lines.length - 1, 1, lastLine);
-    setLines(lines.concat());
-  }
-
+const Drawing = ({ lines }: Props) => {
   return (
-    <Stage
-      width={600}
-      height={600} 
-      onMouseDown={handleMouseDown} 
-      onMouseUp={() => setIsMouseDown(false)}
-      onMouseMove={isMouseDown && handleMouseMovement}
-    >
-    <Layer>
-      <Rect 
-        width={600}
-        height={600}
-        stroke="#e5e5e5"
-        fill='#eee'
-      />
-
+    <>
       {
-        lines.map(line => (
+        lines.map((line: any) => (
           <Line 
-            globalCompositeOperation={mode === 'brush' ? 'source-over' : 'destination-out'}
+            globalCompositeOperation={line.tool === 'brush' ? 'source-over' : 'destination-out'}
             lineCap='round'
             lineJoin='round'
             stroke={line.color}
@@ -60,9 +21,7 @@ const Drawing = ({ color, tool }: Props) => {
           />
         ))
       }
-
-    </Layer>
-    </Stage>
+    </>
   );
 }
 

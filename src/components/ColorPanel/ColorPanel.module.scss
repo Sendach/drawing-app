@@ -16,9 +16,9 @@
   padding: 4px 0px 5px;
   border: 0px;
   background: none;
-  border-bottom: 2px solid rgb(144, 202, 249);
+  border-bottom: 2px solid var(--ui-secondary);
 
-  color: #fff;
+  color: var(--ui-secondary);
   &:focus {
     outline: 0px;
   }

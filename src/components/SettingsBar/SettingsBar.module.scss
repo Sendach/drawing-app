@@ -1,7 +1,7 @@
 .settingsBar {
   width: 100vw;
   height: 55px;
-  background-color: var(--toolbar-color);
+  background-color: var(--ui-primary);
 
   display: flex;
   gap: 3rem;
@@ -10,10 +10,10 @@
 }
 
 .logo {
-  color: #ddd;
+  color: #666;
 }
 
 .selectedTool {
-  color: #fff;
+  color: #666;
   font-size: 16px;
 }
