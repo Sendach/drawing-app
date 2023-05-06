@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { Drawing, Toolbar, SettingsBar } from '../index';
 
 const CanvasManager = () => {
-  const [color, setColor] = useState('green');
+  const [color, setColor] = useState('#FF0000');
+  const [tool, setTool] = useState('Color');
 
-  console.log('color:', color)
   return (
     <div>
       <SettingsBar
-        selectedTool="brush"
+        selectedTool={tool}
+        color={color}
         setColor={setColor}
       />
       <Toolbar />

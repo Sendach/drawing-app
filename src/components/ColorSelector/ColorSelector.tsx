@@ -13,6 +13,7 @@ const ColorSelector = ({ color, setColor }: Props) => {
     <div
       className={styles.colorSelector}
       style={{ backgroundColor: color }}
+      onClick={() => setColor(color)}
     />
   );
 }

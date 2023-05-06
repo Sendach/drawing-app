@@ -1,9 +1,15 @@
 .colorSelector {
-  width: 20px;
-  height: 20px;
+  width: 2.2rem;
+  height: 2.2rem;
 
-  background-color: red;
-  border-radius: 5px;
+  border-radius: 50%;
+
+  border: 2px solid #fff;
+  box-shadow: 0.1rem 0.1rem 0 rgba(0,0,0,0.25);
+
+  &.selected {
+    border-color: #262626;
+  }
 }
 
 .hexCode {
@@ -13,6 +19,7 @@
   border-bottom: 2px solid rgb(144, 202, 249);
 
   color: #fff;
+
   &:focus {
     outline: 0px;
   }

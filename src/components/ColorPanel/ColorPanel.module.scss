@@ -8,8 +8,8 @@
 
 .colorSelection {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 6px;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 0.4rem;
 }
 
 .hexCode {

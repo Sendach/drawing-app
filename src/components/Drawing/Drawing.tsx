@@ -16,7 +16,7 @@ const Drawing = ({ color }: Props) => {
   const handleMouseDown = (e: KonvaEventObject<MouseEvent>) => {
     setIsMouseDown(true);
     const pos = e.target.getStage().getPointerPosition();
-    setLines([...lines, { tool, points: [pos.x, pos.y] }]);
+    setLines([...lines, { tool, color, points: [pos.x, pos.y] }]);
   }
 
   const handleMouseMovement = (e: KonvaEventObject<MouseEvent>) => { 
@@ -52,7 +52,7 @@ const Drawing = ({ color }: Props) => {
             globalCompositeOperation={mode === 'brush' ? 'source-over' : 'destination-out'}
             lineCap='round'
             lineJoin='round'
-            stroke={color}
+            stroke={line.color}
             strokeWidth={5}
             points={line.points}
           />

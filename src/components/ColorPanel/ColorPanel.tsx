@@ -1,5 +1,5 @@
 
-import { useState, Dispatch } from 'react';
+import { useState, Dispatch, ChangeEvent, useEffect } from 'react';
 
 import ColorSelector from '../ColorSelector/ColorSelector';
 
@@ -10,16 +10,40 @@ type Props = {
   setColor: Dispatch<string>
 }
 
+/*
+
+Red, Green, Blue, Yellow, Orange, 
+Pink, Purple, Brown, Black, White
+*/
+
+const colors = [
+  '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FFA500', 
+  '#FFC0CB', '#A020F0', '#964B00', '#000', '#FFF'
+];
+
 const ColorPanel = ({ color, setColor } : Props) => {
-  const [hexCode, setHexCode] = useState('#');
+  const [hexCode, setHexCode] = useState(color);
+
+  const handleHexCode = (e: ChangeEvent<HTMLInputElement>) => {
+    setHexCode(e.target.value)
+  }
+
+  useEffect(() => {
+    if (hexCode[0] !== '#') setHexCode('#' + hexCode)
+
+    if (hexCode.length === 7) setColor(hexCode);
+  }, [hexCode])
+
+  useEffect(() => {
+    setHexCode(color);
+  }, [color])
 
   return (
     <div className={styles.colorPanel}>
 
-      
-        <div className={styles.colorSelection}>
+      <div className={styles.colorSelection}>
         {
-          ['red', 'blue', 'green'].map((color) => (
+          colors.map((color) => (
             <ColorSelector 
               color={color}
               setColor={setColor}
@@ -28,11 +52,12 @@ const ColorPanel = ({ color, setColor } : Props) => {
         }
         </div>
 
-
       <input
         id="hex-code"
         className={styles.hexCode}
-        value={`#${color}`}
+        value={hexCode}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => handleHexCode(e)}
+        maxLength={7}
       />
     </div>
   );
