@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { Stage, Layer, Rect, Line } from 'react-konva';
 
 type Props = {
+  tool: string,
   color: string
 }
 
-const Drawing = ({ color }: Props) => {
-  const [tool, setTool] = useState('brush');
+const Drawing = ({ color, tool }: Props) => {
+
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [lines, setLines] = useState([]);
 
@@ -43,7 +44,8 @@ const Drawing = ({ color }: Props) => {
       <Rect 
         width={600}
         height={600}
-        stroke="red"
+        stroke="#e5e5e5"
+        fill='#eee'
       />
 
       {

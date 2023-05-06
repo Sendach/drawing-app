@@ -8,13 +8,14 @@ const CanvasManager = () => {
   return (
     <div>
       <SettingsBar
-        selectedTool={tool}
+        tool={tool}
         color={color}
         setColor={setColor}
       />
       <Toolbar />
 
       <Drawing
+        tool={tool}
         color={color}
       />
       

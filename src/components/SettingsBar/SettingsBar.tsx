@@ -6,12 +6,12 @@ import ColorPanel from '../ColorPanel/ColorPanel';
 import styles from './SettingsBar.module.scss';
 
 type Props = {
-  selectedTool: string,
+  tool: string,
   color: string,
   setColor: Dispatch<string>
 }
 
-const SettingsBar = ({ selectedTool, color, setColor }: Props) => {
+const SettingsBar = ({ tool, color, setColor }: Props) => {
 
   return (
     <div className={styles.settingsBar}>
@@ -22,7 +22,7 @@ const SettingsBar = ({ selectedTool, color, setColor }: Props) => {
       </div>
 
       <p className={styles.selectedTool}>
-        {selectedTool}
+        {tool}
       </p>
 
       <ColorPanel color={color} setColor={setColor}/>
