@@ -8,10 +8,11 @@ import styles from './SettingsBar.module.scss';
 type Props = {
   tool: string,
   color: string,
-  setColor: Dispatch<string>
+  setColor: Dispatch<string>,
+  action: string
 }
 
-const SettingsBar = ({ tool, color, setColor }: Props) => {
+const SettingsBar = ({ tool, color, setColor, action }: Props) => {
 
   return (
     <div className={styles.settingsBar}>
@@ -25,7 +26,15 @@ const SettingsBar = ({ tool, color, setColor }: Props) => {
         {tool}
       </p>
 
-      <ColorPanel color={color} setColor={setColor}/>
+      {
+        tool === 'pen' && <></>
+      }
+      
+      {
+        action === 'color' && <ColorPanel color={color} setColor={setColor} />
+      }
+
+
 
     </div>
   );

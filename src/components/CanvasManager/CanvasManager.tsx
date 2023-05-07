@@ -4,31 +4,33 @@ import Canvas from '../Canvas/Canvas';
 import { Drawing, Toolbar, SettingsBar } from '../index';
 
 const CanvasManager = () => {
-  const [color, setColor] = useState('#FF0000');
-  const [tool, setTool] = useState('brush');
+  const [color, setColor] = useState<string>('#FF0000');
+  const [tool, setTool] = useState<string>('pen');
+  const [action, setAction] = useState<string>('');
 
   return (
     <div id="canvas-manager">
+
       <SettingsBar
         tool={tool}
         color={color}
         setColor={setColor}
+        action={action}
       />
 
-      {/* <Canvas />  */}
       <Toolbar
+        color={color}
+        tool={tool}
         setTool={setTool}
+        action={action}
+        setAction={setAction}
       />
 
       <Canvas 
         tool={tool}
         color={color}
       /> 
-      {/* <Drawing
-        tool={tool}
-        color={color}
-      /> */}
-      
+
     </div>
   );
 }

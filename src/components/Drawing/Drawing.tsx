@@ -12,10 +12,10 @@ const Drawing = ({ lines }: Props) => {
       {
         lines.map((line: any) => (
           <Line 
-            globalCompositeOperation={line.tool === 'brush' ? 'source-over' : 'destination-out'}
+            // globalCompositeOperation={line.tool === 'pen' ? 'source-over' : 'destination-out'}
             lineCap='round'
             lineJoin='round'
-            stroke={line.color}
+            stroke={line.tool === 'pen' ? line.color : '#fff'}
             strokeWidth={5}
             points={line.points}
           />

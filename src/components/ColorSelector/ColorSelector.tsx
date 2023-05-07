@@ -1,19 +1,21 @@
 
-import { useState, Dispatch } from 'react';
+import { useState, Dispatch, MouseEventHandler } from 'react';
 
 import styles from './ColorSelector.module.scss';
 
 type Props = {
   color: string
-  setColor: Dispatch<string>
+  setColor?: Dispatch<string>,
+  onToolbar: boolean,
+  setAction?: Dispatch<string>
 }
 
-const ColorSelector = ({ color, setColor }: Props) => {
+const ColorSelector = ({ color, setColor, onToolbar=false, setAction }: Props) => {
   return (
     <div
-      className={styles.colorSelector}
+      className={`${styles.colorSelector} ${onToolbar && styles.onToolbar}`}
       style={{ backgroundColor: color }}
-      onClick={() => setColor(color)}
+      onClick={() => onToolbar ? setAction('color') : setColor(color)}
     />
   );
 }

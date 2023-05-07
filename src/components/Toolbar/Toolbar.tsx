@@ -1,30 +1,44 @@
 import { Dispatch } from 'react';
 import { BsPencil, BsEraser } from 'react-icons/bs';
 
+import { ColorSelector } from '../index';
+
 import styles from './Toolbar.module.scss';
 
 type Props = {
-  setTool: Dispatch<string>
+  color: string,
+  tool: string,
+  setTool: Dispatch<string>,
+  action: string,
+  setAction: Dispatch<string>,
 }
 
-const ToolBar = ({ setTool }: Props) => {
+const ToolBar = ({ color, tool, setTool, action, setAction }: Props) => {
   return (
     <div className={styles.toolbar}>
-      {/* <button onClick={() => setTool('eraser')}>Eraser</button background-color: ;n> */}
+
       <div
-        className={styles.toolbarIcon}
-        onClick={() => setTool('brush')}
+        className={`${styles.toolbarIcon} ${tool === 'pen' && styles.selected}`}
+        onClick={() => { setTool('pen'); setAction('') }}
       >
         <BsPencil size="1rem" />
       </div>
 
       <div
-        className={styles.toolbarIcon}
-        onClick={() => setTool('eraser')}
+        className={`${styles.toolbarIcon} ${tool === 'eraser' && styles.selected}`}
+        onClick={() => { setTool('eraser'); setAction('') }}
       >
         <BsEraser size="1rem" />
       </div>
-      {/* <button onClick={() => setTool('brush')}>Brush</button> */}
+
+      <div className={styles.colorSelector}>
+        <ColorSelector
+          setAction={setAction}
+          onToolbar={true}   
+          color={color}
+        />
+      </div>
+
     </div>
   );
 }
