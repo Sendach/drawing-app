@@ -37,19 +37,17 @@ const Canvas = ({ color, tool }: Props) => {
     <div className={styles.canvas}>
       <Stage
         className={styles.stage}
-        width={600}
-        height={600} 
+        width={900}
+        height={700} 
         onMouseDown={handleMouseDown} 
         onMouseUp={() => setIsMouseDown(false)}
         onMouseMove={isMouseDown && handleMouseMovement}
       >
         <Layer>
           <Rect
-            className={styles.rect}
-            width={600}
-            height={600}
-            stroke="#000"
-            fill='#ff0'
+            width={900}
+            height={700}
+            fill='#fff'
           />
 
           <Drawing
