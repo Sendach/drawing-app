@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Dispatch } from 'react';
 import { KonvaEventObject } from 'konva/lib/Node';
 import { Stage, Layer, Rect } from 'react-konva';
 
@@ -8,17 +8,18 @@ import styles from './Canvas.module.scss';
 
 type Props = {
   tool: string,
-  color: string
+  color: string,
+  strokeWidth: number,
 }
 
-const Canvas = ({ color, tool }: Props) => {
+const Canvas = ({ color, tool, strokeWidth}: Props) => {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [lines, setLines] = useState([]);
 
   const handleMouseDown = (e: KonvaEventObject<MouseEvent>) => {
     setIsMouseDown(true);
     const pos = e.target.getStage().getPointerPosition();
-    setLines([...lines, { tool, color, points: [pos.x, pos.y] }]);
+    setLines([...lines, { tool, strokeWidth, color, points: [pos.x, pos.y] }]);
   }
 
   const handleMouseMovement = (e: KonvaEventObject<MouseEvent>) => {
@@ -47,7 +48,7 @@ const Canvas = ({ color, tool }: Props) => {
           <Rect
             width={900}
             height={700}
-            fill='#fff'
+            fill='#FFF'
           />
 
           <Drawing

@@ -15,8 +15,8 @@ const Drawing = ({ lines }: Props) => {
             // globalCompositeOperation={line.tool === 'pen' ? 'source-over' : 'destination-out'}
             lineCap='round'
             lineJoin='round'
-            stroke={line.tool === 'pen' ? line.color : '#fff'}
-            strokeWidth={5}
+            stroke={ line.tool === 'pen' ? line.color : '#fff'}
+            strokeWidth={line.strokeWidth }
             points={line.points}
           />
         ))

@@ -2,6 +2,7 @@ import { Dispatch } from 'react';
 
 
 import ColorPanel from '../ColorPanel/ColorPanel';
+import PenPanel from '../PenPanel/PenPanel';
 
 import styles from './SettingsBar.module.scss';
 
@@ -9,10 +10,14 @@ type Props = {
   tool: string,
   color: string,
   setColor: Dispatch<string>,
-  action: string
+  action: string,
+  penWidth: number,
+  setPenWidth: Dispatch<number>,
+  eraserWidth: number,
+  setEraserWidth: Dispatch<number>
 }
 
-const SettingsBar = ({ tool, color, setColor, action }: Props) => {
+const SettingsBar = ({ tool, color, setColor, action, penWidth, setPenWidth, eraserWidth, setEraserWidth}: Props) => {
 
   return (
     <div className={styles.settingsBar}>
@@ -27,9 +32,21 @@ const SettingsBar = ({ tool, color, setColor, action }: Props) => {
       </p>
 
       {
-        tool === 'pen' && <></>
+        tool === 'pen' && 
+          <PenPanel 
+            toolWidth={penWidth}
+            setToolWidth={setPenWidth}
+          />
       }
       
+      {
+        tool === 'eraser' && 
+          <PenPanel
+            toolWidth={eraserWidth}
+            setToolWidth={setEraserWidth}
+          />
+      }
+
       {
         action === 'color' && <ColorPanel color={color} setColor={setColor} />
       }

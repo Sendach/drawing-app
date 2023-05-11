@@ -9,24 +9,31 @@ type Props = {
   color: string,
   tool: string,
   setTool: Dispatch<string>,
-  action: string,
   setAction: Dispatch<string>,
 }
 
-const ToolBar = ({ color, tool, setTool, action, setAction }: Props) => {
+const ToolBar = ({ color, tool, setTool, setAction }: Props) => {
+
+  const handleToolSelection = (newTool: string) => {
+    if (newTool === 'pen') setTool('pen');
+    else if (newTool === 'eraser') setTool('eraser');
+    
+    setAction('') 
+  }
+
   return (
     <div className={styles.toolbar}>
 
       <div
         className={`${styles.toolbarIcon} ${tool === 'pen' && styles.selected}`}
-        onClick={() => { setTool('pen'); setAction('') }}
+        onClick={() => handleToolSelection('pen')}
       >
         <BsPencil size="1rem" />
       </div>
 
       <div
         className={`${styles.toolbarIcon} ${tool === 'eraser' && styles.selected}`}
-        onClick={() => { setTool('eraser'); setAction('') }}
+        onClick={() => handleToolSelection('eraser')}
       >
         <BsEraser size="1rem" />
       </div>
